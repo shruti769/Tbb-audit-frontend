@@ -20,7 +20,7 @@ const testimonials = [
 
 const Clients = () => {
     return (
-        <section className="bg-[#F7F6F4] pb-30">
+        <section className="bg-[#F7F6F4] pb:10 md:pb-30">
 
             {/* Heading */}
             <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-medium">

@@ -2,12 +2,12 @@ import { CalendarDays } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#151515] text-white py-6 relative">
+    <footer className="bg-[#151515] text-white pt-6 pb-10 sm:pb-6 relative">
 
       <div className="max-w-5xl mx-auto text-center px-6">
 
         {/* Logo */}
-        <div className="flex justify-center mb-">
+        <div className="flex justify-center ">
           <img
             src="/logo-white.png"
             alt="logo"
@@ -16,12 +16,12 @@ const Footer = () => {
         </div>
 
         {/* Title */}
-        <h2 className="text-2xl md:text-4xl md:text-5xl font-regular mb-10">
+        <h2 className="text-2xl md:text-4xl md:text-5xl font-regular mb-6 sm:mb-10">
           THE BRAIN BURNERS
         </h2>
 
         {/* Buttons */}
-        <div className="flex items-center justify-center gap-4 mb-16">
+        <div className="flex items-center justify-center gap-4 mb-8 sm:mb-16">
 
           <button className="bg-white text-black px-6 py-2 sm:py-3  rounded-full text-xs font-regular flex items-center gap-2">
             <CalendarDays size={16} /> Schedule A Call
