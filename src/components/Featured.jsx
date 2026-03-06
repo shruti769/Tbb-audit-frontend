@@ -2,7 +2,7 @@ import React from 'react'
 
 const Featured = () => {
     return (
-        <section className="w-full bg-[#151515] py-20 px-6 md:px-8 lg:px-20">
+        <section id='case-studies' className="w-full bg-[#151515] py-20 px-6 md:px-8 lg:px-20">
             <div className="text-left">
                 <span className="inline-flex items-center px-5 py-[7px] 
                         rounded-full border border-[#FFFFFF26] 

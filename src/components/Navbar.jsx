@@ -14,14 +14,14 @@ export default function Navbar() {
         {/* Left Nav Links (hidden on mobile) */}
         <div className="hidden md:flex gap-6 items-center">
           <a
-            href="#"
+            href="#case-studies"
             className="text-[12px] border-r border-[#15151533] pr-4 font-lexend text-[#151515] tracking-[-0.01em]"
           >
             Case Studies
           </a>
 
           <a
-            href="#"
+            href="#faqs"
             className="text-[12px] font-lexend text-[#151515] tracking-[-0.01em]"
           >
             FAQs
@@ -73,8 +73,8 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden border-t border-[#1515151A] bg-[#F7F6F4] px-6 pb-6 pt-4 flex flex-col gap-4">
 
-          <a className="text-sm">Case Studies</a>
-          <a className="text-sm">FAQs</a>
+          <a href="#case-studies" className="text-sm">Case Studies</a>
+          <a href="faqs" className="text-sm">FAQs</a>
 
           <a
             href="#"
