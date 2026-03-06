@@ -74,7 +74,7 @@ export default function Navbar() {
         <div className="md:hidden border-t border-[#1515151A] bg-[#F7F6F4] px-6 pb-6 pt-4 flex flex-col gap-4">
 
           <a href="#case-studies" className="text-sm">Case Studies</a>
-          <a href="faqs" className="text-sm">FAQs</a>
+          <a href="#faqs" className="text-sm">FAQs</a>
 
           <a
             href="#"
