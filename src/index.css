@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+
+@layer base {
+  body {
+    font-family: 'Lexend', sans-serif;
+
+  }
+}
+
+.continuous-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+body,html{
+  overflow-x: hidden;
+}
