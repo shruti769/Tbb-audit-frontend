@@ -35,7 +35,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <p className="text-sm text-[#EFF6FF]">
-          © 2025 The Brain Burners. All Rights Reserved.
+          © 2026 The Brain Burners. All Rights Reserved.
         </p>
 
       </div>
