@@ -1,18 +1,56 @@
 @import "tailwindcss";
 
+/* Base styles */
+
+button{
+  cursor: pointer;
+}
 
 @layer base {
-  body {
-    font-family: 'Lexend', sans-serif;
 
+  @font-face {
+    font-family: "Satoshi";
+    src: url("./fonts/Satoshi-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  body {
+    font-family: "Satoshi", sans-serif;
+    background-color: #EFF3FF;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 }
 
-.continuous-swiper .swiper-wrapper {
-  transition-timing-function: linear !important;
+@keyframes fade {
+  from {
+    opacity:0;
+    transform:translateY(6px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-body,html{
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+.animate-fade{
+  animation: fade 0.4s ease forwards;
+}
+
+#report-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.pdf-mode * {
+  color: #000 !important;
+  background-color: #fff !important;
+  border-color: #ddd !important;
 }

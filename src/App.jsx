@@ -1,42 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from "./components/Navbar"
 import HeroSection from './components/HeroSection'
-import ServicesSlider from './components/ServiceSlider'
-import BrandWorks from './components/BrandWork'
-import ShopifyStore from './components/ShopifyStore'
-import WhyTBB from './components/WhyTBB'
-import Featured from './components/Featured'
-import IndustriesSection from './components/IndustriesSection'
-import Clients from './components/Clients'
-import WhyShopifyStore from './components/WhyShopifyStore'
-import RightPartnerSection from './components/RightPartner'
-import ScheduleCallSection from './components/ScheduleCallSection'
-import FAQs from './components/FAQs'
-import Footer from './components/Footer'
+import { Routes, Route } from "react-router-dom";
+import AnalyzingPage from './components/AnalyzingPage'
+import ReportPage from './ReportPage';
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
 
-
   return (
     <>
-      <Navbar/>
-      <HeroSection/>
-      <ServicesSlider/>
-      <BrandWorks/>
-      <ShopifyStore/>
-      <WhyTBB/>
-      <Featured/>
-      <IndustriesSection/>
-      <Clients/>
-      <WhyShopifyStore/>
-      <RightPartnerSection/>
-      <ScheduleCallSection/>
-      <FAQs/>
-      <Footer/>
+     <Toaster position="top-center" />
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<HeroSection />} />
+        <Route path="/analyzing" element={<AnalyzingPage />} />
+         <Route path="/report" element={<ReportPage />} />
+      </Routes>
+      
     </>
   )
 }

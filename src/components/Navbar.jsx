@@ -1,31 +1,49 @@
 import { useState } from "react";
-import { CalendarDays, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 
 export default function Navbar() {
 
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
+
+  const navLinks = [
+    { id: "home", label: "Home", href: "#home" },
+    { id: "about", label: "About Us", href: "#about" },
+    { id: "case", label: "Case-Studies", href: "#case-studies" },
+    { id: "audit", label: "AI Website Audit", href: "/" },
+    { id: "team", label: "Meet The Team", href: "#team" },
+  ];
 
   return (
-    <nav className="relative bg-[#F7F6F4] border-b border-[#1515151A]">
+    <nav className="relative border-b border-[#00000024]">
 
-      {/* Navbar container */}
-      <div className="relative max-w-full px-6 md:px-10 lg:px-16 h-[68px] flex flex-row-reverse md:flex-row items-center justify-between">
+      <div className="relative max-w-full px-6 md:px-10 lg:px-16 h-[70px] md:h-[90px] flex flex-row md:flex-row items-center justify-between">
 
-        {/* Left Nav Links (hidden on mobile) */}
-        <div className="hidden md:flex gap-6 items-center">
-          <a
-            href="#case-studies"
-            className="text-[12px] border-r border-[#15151533] pr-4 font-lexend text-[#151515] tracking-[-0.01em]"
-          >
-            Case Studies
-          </a>
+        {/* Logo */}
+        <div className="flex items-center justify-center pointer-events-none">
+          <div className="w-[100px] md:w-[130px] pointer-events-auto">
+            <img src="/logo.png" alt="logo" className="w-full h-auto object-contain" />
+          </div>
+        </div>  
 
-          <a
-            href="#faqs"
-            className="text-[12px] font-lexend text-[#151515] tracking-[-0.01em]"
-          >
-            FAQs
-          </a>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex gap-4 lg:gap-10 items-center">
+
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              onClick={() => setActive(link.id)}
+              className={`text-[16px] pb-1
+                ${active === link.id 
+                  ? "border-b-2 border-dotted border-[#F38400]" 
+                  : "border-b-2 border-transparent"}
+              `}
+            >
+              {link.label}
+            </a>
+          ))}
+
         </div>
 
         {/* Mobile Menu Button */}
@@ -33,63 +51,44 @@ export default function Navbar() {
           onClick={() => setOpen(!open)}
           className="md:hidden z-20"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+         {open?<X size={25} className="text-[#F38400]"/>:<img src="/Frame 16.svg"/>} 
         </button>
 
-        {/* Right CTA (hidden on mobile) */}
+        {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <a
-            href="#"
-            className="flex items-center gap-2 text-xs font-regular text-[#1a1a1a]
-                       px-4 py-3 rounded-full bg-white"
-          >
-            <CalendarDays size={16} />
-            Schedule A Call
-          </a>
-
-          <button
-            className="bg-[#F38400] text-white text-xs font-regular
-                       px-5 py-3 rounded-full tracking-[-0.01em]"
-          >
+          <button className="flex items-center gap-2 bg-[#F38400] text-white text-sm px-6 py-2.5 rounded-full tracking-[-0.01em]">
             Get In Touch
+            <ArrowRight size={16}/>
           </button>
         </div>
 
       </div>
 
-    
-      {/* Center Logo */}
-<div className="absolute md:absolute top-0 left-0 w-full h-[68px] flex items-center justify-center pointer-events-none">
-  <div className="w-[80px] md:w-[100px] pointer-events-auto">
-    <img
-      src="/logo.png"
-      alt="logo"
-      className="w-full h-auto object-contain"
-    />
-  </div>
-</div>
-
       {/* Mobile Dropdown */}
       {open && (
-        <div className="md:hidden border-t border-[#1515151A] bg-[#F7F6F4] px-6 pb-6 pt-4 flex flex-col gap-4">
+        <div className="md:hidden border-t border-[#1515151A] bg-[#EFF3FF] px-6 pb-6 pt-4 flex flex-col items-start gap-4">
 
-          <a href="#case-studies" className="text-sm">Case Studies</a>
-          <a href="#faqs" className="text-sm">FAQs</a>
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              onClick={() => {
+                setActive(link.id);
+                setOpen(false);
+              }}
+              className={`text-[16px]  font-lexend tracking-[-0.01em] pb-1
+                ${active === link.id 
+                  ? "border-b-2 border-dotted border-[#F38400]" 
+                  : ""}
+              `}
+            >
+              {link.label}
+            </a>
+          ))}
 
-          <a
-            href="#"
-            className="flex items-center justify-center gap-2 text-sm
-                       px-4 py-3 rounded-full bg-white"
-          >
-            <CalendarDays size={16} />
-            Schedule A Call
-          </a>
-
-          <button
-            className="bg-[#F38400] text-white text-sm
-                       px-5 py-3 rounded-full"
-          >
+          <button className="flex items-center gap-2 bg-[#F38400] text-white text-sm px-6 py-2.5 rounded-full tracking-[-0.01em]">
             Get In Touch
+            <ArrowRight size={16}/>
           </button>
 
         </div>

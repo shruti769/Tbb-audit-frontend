@@ -1,84 +1,109 @@
-import InfiniteCarousel from "./InfiniteCarousel";
-import TrustedBrands from "./TrustedBrands";
+import { useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 
-export default function HeroSection() {
+const HeroSection = () => {
+
+  const navigate = useNavigate();
+  const [url, setUrl] = useState("");
+
+  const startAudit = () => {
+    let formattedUrl = url.trim();
+
+    if (!formattedUrl || !formattedUrl.includes(".")) {
+      toast.error("Please enter a valid website URL");
+      return;
+    }
+
+    // ✅ Add protocol if missing
+    if (!/^https?:\/\//i.test(formattedUrl)) {
+      formattedUrl = "https://" + formattedUrl;
+    }
+
+    navigate("/analyzing", {
+      state: { url: formattedUrl }
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-[#F7F6F4]">
+    <section className="flex flex-col items-center justify-start pt-10 px-4 sm:px-6 text-center">
 
-      <section className="pt-[30px] md:pt-[40px] overflow-hidden">
+      <h1 className="hidden sm:block text-4xl md:text-6xl font-medium leading-tight max-w-4xl">
+        Find Out Why Your
+        <span className="font-semibold text-[#F38400]"> Website</span>
+        <br />
+        Isn’t
+        <span className="font-semibold text-[#F38400]"> Converting</span>
+      </h1>
 
-        {/* Trust Badge */}
-        <div className="text-center mb-6 md:mb-7 px-4">
-          <span
-            className="inline-flex items-center px-4 md:px-5 py-[6px] md:py-[7px]
-            rounded-full border border-[#1515151A]
-            text-[9px] md:text-[10px] font-regular text-[#151515]"
+      {/* Mobile heading */}
+      <h1 className="block sm:hidden text-[32px] md:text-6xl font-medium leading-tight max-w-4xl">
+        Find Out Why Your <br />
+        <span className="font-medium text-[#F38400]"> Website </span>
+
+        Isn’t
+        <span className="font-medium text-[#F38400]"> Converting</span>
+      </h1>
+
+      <p className="text-[#000] mt-5 max-w-2xl text-md sm:text-lg font-light">
+        Run a free AI website audit and uncover hidden UX and conversion problems.
+      </p>
+
+      <div className="mt-8 w-full max-w-xl flex flex-col items-center gap-4">
+
+        {/* Desktop */}
+        <div className="hidden sm:flex items-center bg-white rounded-full w-full shadow-sm overflow-hidden">
+          <input
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Enter your website URL (example.com)"
+            className="flex-1 px-6 py-4 outline-none text-black placeholder:text-gray-700 rounded-full"
+          />
+
+          <button
+            onClick={startAudit}
+            className="bg-[#F38400] text-white px-6 py-4 font-medium rounded-full flex items-center gap-2 mr-1"
           >
-            Trusted By
-            <strong className="ml-1">300+ D2C Brands</strong>
-          </span>
+            Audit My Website
+            <ArrowRight size={18} />
+          </button>
         </div>
 
-        {/* Headline */}
-        <h1
-          className="
-          text-center
-          text-[34px] sm:text-[40px] md:text-5xl
-          leading-[1.15]
-          font-medium
-          text-[#0f0f0f]
-         
-          mx-auto
-          mb-5 md:mb-6
-          px-5 md:px-6
-          "
-        >
-          We Build{" "}
-          <span className="text-[#F38400]">
-            Shopify Stores
-          </span>{" "}
-          That Convert
-        </h1>
+        {/* Mobile */}
+        <div className="flex sm:hidden flex-col items-center w-full gap-4">
+          <input
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Enter your website URL (example.com)"
+            className="bg-white rounded-full w-full px-6 py-3 outline-none text-black placeholder:text-gray-700 text-center text-sm"
+          />
 
-        {/* Subheading */}
-        <p
-          className="
-          text-center
-          text-[15px] sm:text-[17px] md:text-xl
-          leading-relaxed
-          text-[#151515]
-          max-w-[720px]
-          mx-auto
-          mb-3
-          px-6
-          font-regular
-          "
-        >
-          High-performance Shopify experiences designed to turn paid traffic into predictable revenue.
-        </p>
+          <button
+            onClick={startAudit}
+            className="bg-[#F38400] text-sm text-white px-6 py-2 font-medium rounded-full flex items-center gap-2"
+          >
+            Audit My Website
+            <ArrowRight size={18} />
+          </button>
+        </div>
 
-        {/* Supporting Line */}
-        <p
-          className="
-          text-center
-          text-[13px] sm:text-[14px] md:text-md
-          font-semibold
-          text-[#151515]
-          mb-10 md:mb-12
-          px-6
-          "
-        >
-          Every Decision Driven By Customer Behavior And Real Data.
-        </p>
+      </div>
 
-        {/* Carousel */}
-        <InfiniteCarousel />
 
-        <TrustedBrands />
+      <p className="text-[#0000006B] text-sm mt-4">
+        Free audit • No signup required • Results in 10 seconds
+      </p>
 
-      </section>
+<div className="mt-6 w-full flex justify-center items-center">
+        <img 
+  src="/astro.svg" 
+  className="block max-w-md" 
+/>
+      </div>
 
-    </div>
+    </section>
   );
-}
+};
+
+export default HeroSection;
