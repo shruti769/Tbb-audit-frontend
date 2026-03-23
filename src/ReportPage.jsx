@@ -142,7 +142,7 @@ export default function ReportPage() {
 
       <ReportHeader report={report} sections={sections} />
       <div className="px-4">
-        <section className="max-full mx-auto px-4 sm:px-16 space-y-6 py-10 sm:py-20">
+        <section className="max-full mx-auto px-4 sm:px-16 space-y-6 pb-10 sm:pb-20 pt-10">
 
           {sections.map((item, i) => (
             <AuditCard
