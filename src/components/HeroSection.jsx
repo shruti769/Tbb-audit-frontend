@@ -27,7 +27,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-between sm:justify-start pt-10 px-4 sm:px-6 text-center min-h-screen sm:min-h-auto ">
+    <section className="flex flex-col items-center justify-between sm:justify-start pt-10 px-4 sm:px-6 text-center min-h-180 sm:min-h-auto ">
   <div className="flex flex-col items-center justify-center">
       < h1 className="hidden sm:block text-4xl md:text-6xl font-medium leading-tight max-w-4xl">
         Find Out Why Your
@@ -96,7 +96,7 @@ const HeroSection = () => {
       </p>
     </div>
 
-<div className="mt-0 sm:mt-6 w-full flex justify-center items-center">
+<div className="mt-6 w-full flex justify-center items-center">
         <img 
   src="/astro.svg" 
   className="block max-w-lg" 
