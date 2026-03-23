@@ -127,7 +127,7 @@ export default function AnalyzingPage() {
           {/* Rocket icon */}
           <img
             src="/animation-icon.svg"
-            className="absolute -top-10 sm:-top-14 w-8 sm:w-10 transition-all duration-500"
+            className="absolute -top-9 sm:-top-9 w-8 sm:w-10 transition-all duration-500"
             style={{ left: `calc(${progress}% - 16px)` }}
           />
         </div>
@@ -147,7 +147,7 @@ export default function AnalyzingPage() {
       </div>
 
       {/* Bottom Message */}
-      <p className="text-black mt-16 sm:mt-24 max-w-3xl text-base sm:text-lg md:text-2xl font-light px-2">
+      <p className="text-black mt-16 sm:mt-30 max-w-4xl text-base sm:text-lg md:text-2xl font-light px-2">
         This will only take a few seconds. Please wait while we analyze your website.
       </p>
 

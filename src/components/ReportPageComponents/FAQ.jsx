@@ -42,25 +42,24 @@ const FAQs = () => {
 
       {/* Heading */}
       <div className="text-center mb-10 md:mb-12">
-       
+
         <h2 className="text-[28px] md:text-4xl  font-medium text-gray-900">
           Frequently Asked
           <span className="text-[#F38400]"> Questions</span>
         </h2>
+        <p className="mt-4 text-[#6A6A6A] text-sm">Everything you might want to know before starting your website project with us.</p>
       </div>
 
       {/* Accordion */}
       <Accordion.Root
         type="single"
         collapsible
-        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4"
-      >
+        className="max-w-6xl mx-auto columns-1 md:columns-2 gap-4 space-y-4"      >
         {faqs.map((faq, index) => (
           <Accordion.Item
             key={index}
             value={`item-${index}`}
-            className="border border-[#0000001A] rounded-lg px-4 py-6 bg-[#F8F9FA]"
-          >
+            className="break-inside-avoid border border-[#0000001A] rounded-lg px-4 py-6 bg-[#F8F9FA]"          >
             <Accordion.Header>
               <Accordion.Trigger className="group flex w-full items-start justify-between text-left text-sm font-medium text-[#000] cursor-pointer gap-4">
                 <span>{faq.q}</span>

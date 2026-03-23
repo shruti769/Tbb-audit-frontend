@@ -58,7 +58,8 @@ const mapReportToSections = (report) => {
       solutions: report.conversion_friction?.solutions,
     },
     {
-      title: "Strategic Summary",
+      heading: "Overall Score",
+      title: "Strategic Summary & Scope of Improvement",
       score: report.overall_score?.score,
       positives: report.strategic_summary?.key_strengths,
       negatives: report.strategic_summary?.scope_of_improvement,
@@ -132,7 +133,7 @@ export default function ReportPage() {
   }
 
   return (
-    <div className="bg-[#eef1f5]">
+    <div className="bg-[#EFF3FF]">
       <div className="px-4">
         <ReportHero screenshot={report.screenshot} />
         <OverallScoreCard data={report.overall_score} />
@@ -141,7 +142,7 @@ export default function ReportPage() {
 
       <ReportHeader report={report} sections={sections} />
       <div className="px-4">
-        <section className="max-w-6xl mx-auto px-0 sm:px-6 space-y-6 py-10 sm:py-20">
+        <section className="max-full mx-auto px-4 sm:px-16 space-y-6 py-10 sm:py-20">
 
           {sections.map((item, i) => (
             <AuditCard
@@ -153,6 +154,7 @@ export default function ReportPage() {
               negatives={item.negatives || []}
               solutions={item.solutions || []}
               openSolution={openSolution}
+              heading={item?.heading}
             />
           ))}
 

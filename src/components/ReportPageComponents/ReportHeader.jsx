@@ -3,7 +3,7 @@ import html2pdf from "html2pdf.js";
 import AuditPdf from "../../AuditPdf";
 import { useState, useRef, useEffect } from "react";
 
-const ReportHeader = ({ report, sections }) => {
+const   ReportHeader = ({ report, sections }) => {
   const [downloading, setDownloading] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const sectionRef = useRef(null);
@@ -67,7 +67,7 @@ useEffect(() => {
 
       <img
         src="/arrow-icon.svg"
-        className="hidden sm:block absolute -top-30 left-60 mb-4 h-60"
+        className="hidden sm:block absolute -top-30 left-70 mb-4 h-55"
       />
 
 

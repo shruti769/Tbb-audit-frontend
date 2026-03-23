@@ -27,9 +27,9 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-start pt-10 px-4 sm:px-6 text-center">
-
-      <h1 className="hidden sm:block text-4xl md:text-6xl font-medium leading-tight max-w-4xl">
+    <section className="flex flex-col items-center justify-between sm:justify-start pt-10 px-4 sm:px-6 text-center min-h-screen sm:min-h-auto ">
+  <div>
+      < h1 className="hidden sm:block text-4xl md:text-6xl font-medium leading-tight max-w-4xl">
         Find Out Why Your
         <span className="font-semibold text-[#F38400]"> Website</span>
         <br />
@@ -76,7 +76,7 @@ const HeroSection = () => {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Enter your website URL (example.com)"
-            className="bg-white rounded-full w-full px-6 py-3 outline-none text-black placeholder:text-gray-700 text-center text-sm"
+            className="bg-white rounded-full w-full px-6 py-3 outline-none text-black placeholder:text-black text-center text-sm"
           />
 
           <button
@@ -94,6 +94,7 @@ const HeroSection = () => {
       <p className="text-[#0000006B] text-sm mt-4">
         Free audit • No signup required • Results in 10 seconds
       </p>
+    </div>
 
 <div className="mt-6 w-full flex justify-center items-center">
         <img 

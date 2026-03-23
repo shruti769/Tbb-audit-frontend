@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MoveUpRight } from "lucide-react";
 
 const getScoreColor = (score) => {
   if (score <= 2) return "#E63900";
@@ -54,15 +54,18 @@ const ScoreCircle = ({ score }) => {
 };
 
 const AuditCard = ({ title, number, score, positives = [], negatives = [], solutions = [],
-  openSolution }) => {
+  openSolution,heading }) => {
   return (
 
     <div className="bg-white rounded-lg p-4 flex flex-col md:flex-row justify-between border border-[#E6E6E6]">
 
+
       {/* LEFT SCORE PANEL */}
 
       <div className="bg-white sm:bg-[#EFF3FF] rounded-lg p-0 sm:p-4 flex flex-row-reverse md:flex-col items-center justify-between w-full md:w-[270px]">
-
+ <p className=" text-[#F38400] text-md font-medium text-center">
+          {heading}
+        </p>
         <ScoreCircle score={score} />
 
         <p className="mt-4 text-lg font-medium sm:font-semibold text-center">
@@ -117,12 +120,12 @@ const AuditCard = ({ title, number, score, positives = [], negatives = [], solut
           className="text-[#F38400] underline font-semibold text-md flex items-center gap-1"
         >
           Solution
-          <ArrowRight size={16} />
+          <MoveUpRight size={16}  />
         </button>
 
         <div
           style={{ fontFamily: "Poppins, sans-serif" }}
-          className="hidden text-8xl text-[#1D3BD2]/15 font-bold"
+          className="hidden sm:block text-8xl text-[#1D3BD2]/15 font-bold"
         >
           {number}
         </div>
