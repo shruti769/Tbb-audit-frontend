@@ -19,13 +19,13 @@ const ReportHero = ({ screenshot }) => {
           <img
             src={imageSrc}
             alt="Website Screenshot"
-            className="rounded-xl shadow-lg w-full max-w-4xl mx-auto"
+            className="rounded-xl shadow-lg w-full max-w-4xl mx-auto border-2 border-black"
           />
         ) : (
            <img
             src="/website-preview.png"
             alt="Website Screenshot"
-            className="rounded-xl shadow-lg w-full max-w-4xl mx-auto"
+            className="rounded-xl shadow-lg w-full max-w-4xl mx-auto border-2 border-black"
           />
         )}
 

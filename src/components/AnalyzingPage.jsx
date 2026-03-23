@@ -27,61 +27,67 @@ export default function AnalyzingPage() {
     Math.floor((progress / 100) * steps.length)
   );
 
-  
-   useEffect(() => {
+
+  useEffect(() => {
     if (animationDone) return;
+
+    const totalDuration = 32000; // 32 seconds
+    const intervalTime = 100; // update every 100ms
+    const increment = 95 / (totalDuration / intervalTime);
+    // reach 95% in ~32 sec
 
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 95) return prev; //  stop before completion
+        if (prev >= 95) return prev;
 
-        // speed curve
-        if (prev >= 80) return prev + 0.3;
-        if (prev >= 60) return prev + 0.6;
-        if (prev >= 30) return prev + 1;
-        return prev + 1.5;
+        let speed = increment;
+
+        if (prev > 80) speed *= 0.4;
+        else if (prev > 60) speed *= 0.6;
+
+        return prev + speed;
       });
-    }, 100);
+    }, intervalTime);
 
     return () => clearInterval(interval);
   }, [animationDone]);
 
   //  API Call (Axios)
- useEffect(() => {
-  if (!url) {
-    toast.error("Missing website URL");
-    navigate("/");
-    return;
-  }
-
-  const fetchAudit = async () => {
-    try {
-
-      const res = await axios.post(
-        `${BASE_URL}/audit`,
-        { url }
-      );
-
-      setReportData(res.data);
-
-      
-     setProgress(100);
-      setAnimationDone(true);
-
-      localStorage.setItem("report", JSON.stringify(res.data));
-
-    } catch (err) {
-      console.error("API Error:", err);
-      toast.error("Failed to analyze website");
+  useEffect(() => {
+    if (!url) {
+      toast.error("Missing website URL");
       navigate("/");
+      return;
     }
-  };
 
-  fetchAudit();
-}, [url]);
+    const fetchAudit = async () => {
+      try {
+
+        const res = await axios.post(
+          `${BASE_URL}/audit`,
+          { url }
+        );
+
+        setReportData(res.data);
+
+
+        setProgress(100);
+        setAnimationDone(true);
+
+        localStorage.setItem("report", JSON.stringify(res.data));
+
+      } catch (err) {
+        console.error("API Error:", err);
+        toast.error("Failed to analyze website");
+        navigate("/");
+      }
+    };
+
+    fetchAudit();
+  }, [url]);
 
   // Navigate when BOTH done
- useEffect(() => {
+  useEffect(() => {
     if (animationDone && reportData) {
       const timer = setTimeout(() => {
         toast.success("Audit completed 🎉");
@@ -96,55 +102,55 @@ export default function AnalyzingPage() {
   }, [animationDone, reportData, navigate]);
 
   return (
-  <div className="min-h-[70vh] sm:min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6">
+    <div className="min-h-[70vh] sm:min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6">
 
-    {/* Heading */}
-    <h1 className="text-3xl sm:text-4xl md:text-6xl font-medium max-w-3xl leading-snug">
-      Our AI Is
-      <span className="text-[#F38400] font-semibold"> Analyzing </span>
-      Your Website
-    </h1>
+      {/* Heading */}
+      <h1 className="text-3xl sm:text-4xl md:text-6xl font-medium max-w-4xl leading-snug">
+        Our AI Is
+        <span className="text-[#F38400] font-semibold"> Analyzing </span>
+        Your Website
+      </h1>
 
-    {/* Progress Section */}
-    <div className="mt-16 sm:mt-24 w-full flex flex-col items-center">
+      {/* Progress Section */}
+      <div className="mt-16 sm:mt-24 w-full flex flex-col items-center">
 
-      <div className="relative w-full max-w-[620px]">
-        {/* Background bar */}
-        <div className="h-[8px] sm:h-[10px] bg-[#78788029] rounded-full" />
+        <div className="relative w-full max-w-[620px]">
+          {/* Background bar */}
+          <div className="h-[8px] sm:h-[10px] bg-[#78788029] rounded-full" />
 
-        {/* Progress fill */}
-        <div
-          className="h-[8px] sm:h-[10px] bg-[#F38400] rounded-full absolute top-0 left-0 transition-all duration-500"
-          style={{ width: `${progress}%` }}
-        />
+          {/* Progress fill */}
+          <div
+            className="h-[8px] sm:h-[10px] bg-[#F38400] rounded-full absolute top-0 left-0 transition-all duration-500"
+            style={{ width: `${progress}%` }}
+          />
 
-        {/* Rocket icon */}
-        <img
-          src="/animation-icon.svg"
-          className="absolute -top-10 sm:-top-14 w-8 sm:w-10 transition-all duration-500"
-          style={{ left: `calc(${progress}% - 16px)` }}
-        />
+          {/* Rocket icon */}
+          <img
+            src="/animation-icon.svg"
+            className="absolute -top-10 sm:-top-14 w-8 sm:w-10 transition-all duration-500"
+            style={{ left: `calc(${progress}% - 16px)` }}
+          />
+        </div>
+
+        {/* Steps */}
+        <div className="flex justify-between w-full max-w-[620px] mt-4 text-[10px] sm:text-xs px-1">
+          {steps.map((item, index) => (
+            <div key={index} className="flex-1 text-center leading-tight px-1">
+              {index <= step && (
+                <span className="text-black font-light break-words">
+                  {item}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Steps */}
-      <div className="flex justify-between w-full max-w-[620px] mt-4 text-[10px] sm:text-xs px-1">
-        {steps.map((item, index) => (
-          <div key={index} className="flex-1 text-center leading-tight px-1">
-            {index <= step && (
-              <span className="text-black font-light break-words">
-                {item}
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Bottom Message */}
+      <p className="text-black mt-16 sm:mt-24 max-w-3xl text-base sm:text-lg md:text-2xl font-light px-2">
+        This will only take a few seconds. Please wait while we analyze your website.
+      </p>
+
     </div>
-
-    {/* Bottom Message */}
-    <p className="text-black mt-16 sm:mt-24 max-w-xl text-base sm:text-lg md:text-2xl font-light px-2">
-      This will only take a few seconds. Please wait while we analyze your website.
-    </p>
-
-  </div>
-);
+  );
 }

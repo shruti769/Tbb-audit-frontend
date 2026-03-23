@@ -58,7 +58,7 @@ const HeroSection = () => {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Enter your website URL (example.com)"
-            className="flex-1 px-6 py-4 outline-none text-black placeholder:text-gray-700 rounded-full"
+            className="flex-1 px-6 py-4 outline-none text-black placeholder:text-black rounded-full"
           />
 
           <button
