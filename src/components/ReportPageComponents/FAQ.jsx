@@ -38,7 +38,7 @@ const faqs = [
 
 const FAQs = () => {
   return (
-    <section id="faqs" className="bg-white py-10 sm:py-20 px-6 md:px-8 lg:px-16 mb-10">
+    <section id="faqs" className="bg-white py-10 sm:py-20 px-6 md:px-8 lg:px-16 ">
 
       {/* Heading */}
       <div className="text-center mb-10 md:mb-12">

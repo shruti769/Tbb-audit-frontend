@@ -1,23 +1,23 @@
 import React from "react";
-import CtaButton from "@/components/all_services/CtaButton";
+import { ArrowRight } from "lucide-react";
 
 const socialLinks = [
   {
-    src: "/assets/services/social-instagram.svg",
+    src: "/social-instagram.svg",
     alt: "Instagram",
     href: "#",
     w: 36,
     h: 35,
   },
   {
-    src: "/assets/services/social-linkedin.svg",
+    src: "/social-linkedin.svg",
     alt: "LinkedIn",
     href: "#",
     w: 34,
     h: 34,
   },
   {
-    src: "/assets/services/social-youtube.svg",
+    src: "/social-youtube.svg",
     alt: "YouTube",
     href: "#",
     w: 34,
@@ -35,7 +35,7 @@ const footerNavItems = [
 
 export default function FooterSection() {
   return (
-    <footer className="relative h-[850px] min-[1900px]:h-[1000px] bg-[#EFF3FF] overflow-hidden [font-family:var(--font-satoshi)]">
+    <footer className="relative h-[700px] sm:h-[800px] bg-[#EFF3FF] overflow-hidden [font-family:var(--font-satoshi)]">
       
       <video
         autoPlay
@@ -46,7 +46,7 @@ export default function FooterSection() {
         className="absolute opacity-[60%] bottom-0 left-0 w-full h-auto min-h-full scale-[1.4] origin-bottom object-cover"
         aria-hidden="true"
       >
-        <source src="/assets/services/footer.mp4" type="video/mp4" />
+        <source src="/footer.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-0" aria-hidden="true" />
@@ -82,22 +82,15 @@ export default function FooterSection() {
         </p>
 
         <div className="mt-8 lg:mt-9 scale-[0.8]">
-          <CtaButton
-            label="Let's Build Your Website"
-            variant="black"
-            className="w-full max-w-[378px]"
-          />
+          <button className="flex items-center gap-2 bg-[#000] text-white text-lg px-6 sm:px-12 py-4 rounded-full tracking-[-0.01em]">
+            Let’s Build Your Website
+            <ArrowRight size={20}/>
+          </button>
         </div>
 
         <div className="hidden lg:block lg:flex-1" />
 
-        <nav className="lg:mt-30 hidden w-full items-center justify-center gap-[70px] text-[20px] leading-normal text-black lg:flex">
-          {footerNavItems.map((item) => (
-            <a key={item.href} href={item.href} className="whitespace-nowrap">
-              {item.label}
-            </a>
-          ))}
-        </nav>
+       
       </div>
 
       <p className="absolute bottom-4 right-10 text-[12px] leading-normal text-[#353535] xl:text-[20px]">

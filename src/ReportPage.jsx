@@ -9,7 +9,7 @@ import FAQs from "./components/ReportPageComponents/FAQ"
 import { ArrowRight, Download } from "lucide-react";
 import html2pdf from "html2pdf.js";
 import AuditPdf from "./AuditPdf";
-
+import FooterSection from "./components/Footer"
 
 const mapReportToSections = (report) => {
   if (!report) return [];
@@ -134,14 +134,14 @@ export default function ReportPage() {
 
   return (
     <div className="bg-[#EFF3FF]">
-      <div className="px-4">
+      <div className="px-4 sm:px-0">
         <ReportHero screenshot={report.screenshot} />
         <OverallScoreCard data={report.overall_score} />
       </div>
 
 
       <ReportHeader report={report} sections={sections} />
-      <div className="px-4">
+      <div className="">
         <section className="max-full mx-auto px-4 sm:px-16 space-y-6 pb-10 sm:pb-20 pt-10">
 
           {sections.map((item, i) => (
@@ -198,6 +198,8 @@ export default function ReportPage() {
       <div className="hidden">
         <AuditPdf report={report} sections={sections} />
       </div>
+
+      <FooterSection/>
     </div>
   );
 }
