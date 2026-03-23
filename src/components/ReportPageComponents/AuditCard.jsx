@@ -68,7 +68,7 @@ const AuditCard = ({ title, number, score, positives = [], negatives = [], solut
         </p>
         <ScoreCircle score={score} />
 
-        <p className="mt-4 text-lg font-medium sm:font-semibold text-center">
+        <p className="mt-4 text-lg font-medium sm:font-semibold text-start sm:text-center">
           {title}
         </p>
 
