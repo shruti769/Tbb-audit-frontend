@@ -15,10 +15,9 @@ export default function Navbar() {
   ];
 
   const services = [
-    { label: "Web Design", href: "#" },
-    { label: "Development", href: "#" },
-    { label: "SEO Optimization", href: "#" },
-    { label: "Conversion Optimization", href: "#" },
+    { label: "Website Development", href: "#" },
+    { label: "D2C Store Development", href: "#" },
+    { label: "MVP Development", href: "#" }
   ];
 
   return (

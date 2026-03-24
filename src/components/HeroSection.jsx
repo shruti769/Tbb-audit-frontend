@@ -27,7 +27,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-between sm:justify-start pt-10 px-4 sm:px-6 text-center min-h-180 sm:min-h-auto ">
+    <section className="flex flex-col items-center justify-between  pt-10 px-4 sm:px-6 text-center min-h-180 sm:min-h-screen ">
   <div className="flex flex-col items-center justify-center">
       < h1 className="hidden sm:block text-4xl md:text-6xl font-medium leading-tight max-w-4xl">
         Find Out Why Your
@@ -58,12 +58,12 @@ const HeroSection = () => {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Enter your website URL (example.com)"
-            className="flex-1 px-6 py-4 outline-none text-black placeholder:text-black rounded-full"
+            className="flex-1 px-6 py-5 outline-none text-black placeholder:text-black rounded-full"
           />
 
           <button
             onClick={startAudit}
-            className="bg-[#F38400] text-white px-6 py-4 font-medium rounded-full flex items-center gap-2 mr-1"
+            className="bg-[#F38400] text-white px-6 py-3.5 font-medium rounded-full flex items-center gap-2 mr-1"
           >
             Audit My Website
             <ArrowRight size={18} />
@@ -99,7 +99,7 @@ const HeroSection = () => {
 <div className="mt-6 w-full flex justify-center items-center">
         <img 
   src="/astro.svg" 
-  className="block max-w-lg" 
+  className="block max-w-2xl" 
 />
       </div>
 
