@@ -120,7 +120,7 @@ const AuditCard = ({ title, number, score, positives = [], negatives = [], solut
           className="text-[#F38400] underline font-semibold text-md flex items-center gap-1"
         >
           Solution
-          <MoveUpRight size={16}  />
+          <img src="/arrow.svg"/>
         </button>
 
         <div
