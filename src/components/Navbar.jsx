@@ -7,17 +7,19 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
 
   const navLinks = [
-    { id: "home", label: "Home", href: "#home" },
-    { id: "about", label: "About Us", href: "#about" },
-    { id: "services", label: "Services" }, // changed
+    { id: "home", label: "Home", href: "https://thebrainburners.io/home" },
+    { id: "about", label: "About Us", href: "https://thebrainburners.io/about" },
+    { id: "services", label: "Services", href:"https://thebrainburners.io/all_services"}, // changed
+     { id: "case-studies", label: "Case Studies", href:"https://thebrainburners.io/case_studies"},
     { id: "audit", label: "AI Website Audit", href: "/" },
-    { id: "team", label: "Meet The Team", href: "#team" },
+    { id: "team", label: "Meet The Team", href: "https://thebrainburners.io/team" },
   ];
 
   const services = [
-    { label: "Website Development", href: "#" },
-    { label: "D2C Store Development", href: "#" },
-    { label: "MVP Development", href: "#" }
+    { label: "All Services", href: "https://thebrainburners.io/all_services" },
+    { label: "Website Development", href: "https://thebrainburners.io/all_services" },
+    { label: "D2C Store Development", href: "https://thebrainburners.io/all_services" },
+    { label: "MVP Development", href: "https://thebrainburners.io/all_services" }
   ];
 
   return (
@@ -95,7 +97,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {open && (
-        <div className="md:hidden border-t border-[#1515151A] bg-[#EFF3FF] px-6 pb-6 pt-4 flex flex-col gap-4">
+        <div className="md:hidden border-t border-[#1515151A] bg-[#EFF3FF] px-6 pb-6 pt-4 items-start flex flex-col gap-4">
 
           {navLinks.map((link) => {
             if (link.id === "services") {
