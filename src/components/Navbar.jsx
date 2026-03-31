@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
@@ -16,11 +16,22 @@ export default function Navbar() {
   ];
 
   const services = [
-    { label: "All Services", href: "https://thebrainburners.io/all_services" },
     { label: "Website Development", href: "https://thebrainburners.io/all_services" },
     { label: "D2C Store Development", href: "https://thebrainburners.io/all_services" },
     { label: "MVP Development", href: "https://thebrainburners.io/all_services" }
   ];
+
+  useEffect(() => {
+  if (open) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [open]);
 
   return (
     <nav className="relative border-b border-[#00000024]">
@@ -95,65 +106,97 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
-      {open && (
-        <div className="md:hidden border-t border-[#1515151A] bg-[#EFF3FF] px-6 pb-6 pt-4 items-start flex flex-col gap-4">
+     {/* ── Mobile Drawer ── */}
+<div
+  className={`fixed inset-0 z-[60] md:hidden ${
+    open ? "pointer-events-auto" : "pointer-events-none"
+  }`}
+>
+  {/* Backdrop */}
+  <div
+    onClick={() => setOpen(false)}
+    className={`absolute inset-0 bg-black/30 transition-opacity duration-300 ${
+      open ? "opacity-100" : "opacity-0"
+    }`}
+  />
 
-          {navLinks.map((link) => {
-            if (link.id === "services") {
-              return (
-                <div key={link.id}>
-                  <button
-                    onClick={() => setServicesOpen(!servicesOpen)}
-                    className="flex items-center justify-between w-full text-[16px]"
-                  >
-                    Services
-                    <ChevronDown size={16} />
-                  </button>
+  {/* Drawer */}
+  <aside
+    className={`absolute right-0 top-0 h-screen w-[75vw] max-w-[340px] min-w-[240px]
+    bg-[#EFF3FF] px-5 py-5 shadow-[-12px_0_30px_rgba(31,38,135,0.25)]
+    transition-transform duration-300 ease-out
+    ${open ? "translate-x-0" : "translate-x-full"}`}
+  >
+    {/* Header */}
+    <div className="flex items-center justify-between mb-6">
+      <p className="text-[20px] font-semibold">Menu</p>
+      <button onClick={() => setOpen(false)}>
+        <X size={22} />
+      </button>
+    </div>
 
-                  {servicesOpen && (
-                    <div className="ml-4 mt-2 flex flex-col gap-2">
-                      {services.map((item) => (
-                        <a
-                          key={item.label}
-                          href={item.href}  
-                          className="text-sm"
-                          onClick={() => setOpen(false)}
-                        >
-                          {item.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            }
-
-            return (
-              <a
-                key={link.id}
-                href={link.href}
-                onClick={() => {
-                  setActive(link.id);
-                  setOpen(false);
-                }}
-                className={`text-[16px] pb-1
-                  ${active === link.id 
-                    ? "border-b-2 border-dotted border-[#F38400]" 
-                    : ""}
-                `}
+    {/* Links */}
+    <div className="flex flex-col gap-2">
+      {navLinks.map((link) => {
+        if (link.id === "services") {
+          return (
+            <div key={link.id}>
+              <button
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className="flex justify-between w-full px-3 py-3 rounded-lg hover:bg-[#fff3e4]"
               >
-                {link.label}
-              </a>
-            );
-          })}
+                Services
+                <ChevronDown size={16} />
+              </button>
 
-          <button className="flex items-center gap-2 bg-[#F38400] text-white text-sm px-6 py-2.5 rounded-full">
-            Get In Touch
-            <ArrowRight size={16} />
-          </button>
-        </div>
-      )}
+              {servicesOpen && (
+                <div className="ml-3 flex flex-col">
+                  {services.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="px-3 py-2 text-sm hover:text-[#F38400]"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        }
+
+        return (
+          <a
+            key={link.id}
+            href={link.href}
+            onClick={() => {
+              setActive(link.id);
+              setOpen(false);
+            }}
+            className={`px-3 py-3 rounded-lg transition
+              ${
+                active === link.id
+                  ? " text-[#F38400]"
+                  : "hover:bg-[#fff3e4]"
+              }`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </div>
+
+    {/* CTA */}
+    <div className="mt-6">
+      <button className="w-full flex items-center justify-center gap-2 bg-[#F38400] text-white py-3 rounded-full">
+        Get In Touch
+        <ArrowRight size={16} />
+      </button>
+    </div>
+  </aside>
+</div>
     </nav>
   );
 }
