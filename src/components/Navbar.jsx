@@ -1,19 +1,30 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
+import { 
+  ArrowRight, 
+  Menu, 
+  X, 
+  ChevronDown,
+  Home,
+  User,
+  Briefcase,
+  Layers,
+  Sparkles,
+  Users
+} from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const [servicesOpen, setServicesOpen] = useState(false);
 
-  const navLinks = [
-    { id: "home", label: "Home", href: "https://thebrainburners.io/home" },
-    { id: "about", label: "About Us", href: "https://thebrainburners.io/about" },
-    { id: "services", label: "Services", href:"https://thebrainburners.io/all_services"}, // changed
-     { id: "case-studies", label: "Case Studies", href:"https://thebrainburners.io/case_studies"},
-    { id: "audit", label: "AI Website Audit", href: "/" },
-    { id: "team", label: "Meet The Team", href: "https://thebrainburners.io/team" },
-  ];
+const navLinks = [
+  { id: "home", label: "Home", href: "https://thebrainburners.io/home", icon: Home },
+  { id: "about", label: "About Us", href: "https://thebrainburners.io/about", icon: User },
+  { id: "services", label: "Services", href:"https://thebrainburners.io/all_services", icon: Briefcase },
+  { id: "case-studies", label: "Case Studies", href:"https://thebrainburners.io/case_studies", icon: Layers },
+  { id: "audit", label: "AI Website Audit", href: "/", icon: Sparkles },
+  { id: "team", label: "Meet The Team", href: "https://thebrainburners.io/team", icon: Users },
+];
 
   const services = [
     { label: "Website Development", href: "https://thebrainburners.io/all_services" },
@@ -136,57 +147,76 @@ export default function Navbar() {
     </div>
 
     {/* Links */}
-    <div className="flex flex-col gap-2">
-      {navLinks.map((link) => {
-        if (link.id === "services") {
-          return (
-            <div key={link.id}>
-              <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                className="flex justify-between w-full px-3 py-3 rounded-lg hover:bg-[#fff3e4]"
-              >
-                Services
-                <ChevronDown size={16} />
-              </button>
+   <div className="flex flex-col gap-1">
+  {navLinks.map((link) => {
+    const Icon = link.icon;
 
-              {servicesOpen && (
-                <div className="ml-3 flex flex-col">
-                  {services.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="px-3 py-2 text-sm hover:text-[#F38400]"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        }
-
-        return (
-          <a
-            key={link.id}
-            href={link.href}
-            onClick={() => {
-              setActive(link.id);
-              setOpen(false);
-            }}
-            className={`px-3 py-3 rounded-lg transition
+    // 👉 SERVICES WITH DROPDOWN
+    if (link.id === "services") {
+      return (
+        <div key={link.id}>
+          <button
+            onClick={() => setServicesOpen(!servicesOpen)}
+            className={`flex items-center justify-between w-full px-3 py-3 rounded-lg transition
               ${
-                active === link.id
-                  ? " text-[#F38400]"
+                active === "services"
+                  ? "bg-[#fff3e4] text-[#F38400]"
                   : "hover:bg-[#fff3e4]"
               }`}
           >
-            {link.label}
-          </a>
-        );
-      })}
-    </div>
+            <div className="flex items-center gap-3">
+              <Icon size={18} />
+              <span>{link.label}</span>
+            </div>
+
+            <ChevronDown
+              size={16}
+              className={`transition-transform ${
+                servicesOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+
+          {servicesOpen && (
+            <div className="ml-9 flex flex-col mt-1">
+              {services.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="px-3 py-2 text-sm text-black/70 hover:text-[#F38400] hover:bg-[#fff3e4] rounded-md"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // 👉 NORMAL LINKS WITH ICONS
+    return (
+      <a
+        key={link.id}
+        href={link.href}
+        onClick={() => {
+          setActive(link.id);
+          setOpen(false);
+        }}
+        className={`flex items-center gap-3 px-3 py-3 rounded-lg transition
+          ${
+            active === link.id
+              ? "bg-[#fff3e4] text-[#F38400]"
+              : "hover:bg-[#fff3e4]"
+          }`}
+      >
+        <Icon size={18} />
+        <span>{link.label}</span>
+      </a>
+    );
+  })}
+</div>
 
     {/* CTA */}
     <div className="mt-6">
