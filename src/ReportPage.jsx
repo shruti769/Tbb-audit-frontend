@@ -161,7 +161,14 @@ export default function ReportPage() {
 
           <div className="hidden sm:flex justify-center gap-4 mt-6 sm:mt-10">
 
-            <button className="bg-[#F38400] text-sm text-white px-4 sm:px-6 py-3 rounded-full flex items-center gap-2">
+            <button 
+            onClick={() =>
+              window.open(
+                "https://cal.com/robin-thebrainburners.io/audit-with-robin",
+                "_blank"
+              )
+            }
+            className="bg-[#F38400] text-sm text-white px-4 sm:px-6 py-3 rounded-full flex items-center gap-2">
               Book Free Consultation
               <ArrowRight size={18} />
             </button>

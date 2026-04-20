@@ -49,7 +49,14 @@ const SolutionModal = ({ open, onClose, solutions = [] }) => {
 
         {/* CTA */}
 
-        <div className="flex justify-center mt-10">
+        <div 
+        onClick={() =>
+              window.open(
+                "https://cal.com/robin-thebrainburners.io/audit-with-robin",
+                "_blank"
+              )
+            }
+        className="flex justify-center mt-10">
 
           <button className="bg-[#F38400] text-white px-8 py-4 rounded-full text-sm font-medium flex items-center gap-2">
             Book Free Consultation With TBB Team <ArrowRight size={18}/>

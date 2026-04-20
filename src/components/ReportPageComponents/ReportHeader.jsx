@@ -87,7 +87,14 @@ useEffect(() => {
       {/* Desktop Buttons (unchanged) */}
       <div className="hidden sm:flex justify-center gap-4 mt-6">
 
-        <button className="bg-[#F38400] text-sm text-white px-6 py-3 rounded-full flex items-center gap-2">
+        <button 
+        onClick={() =>
+              window.open(
+                "https://cal.com/robin-thebrainburners.io/audit-with-robin",
+                "_blank"
+              )
+            }
+        className="bg-[#F38400] text-sm text-white px-6 py-3 rounded-full flex items-center gap-2">
           Book Free Consultation
           <ArrowRight size={18} />
         </button>
@@ -125,7 +132,14 @@ useEffect(() => {
 
           <div className="flex gap-2">
 
-            <button className="flex-1 bg-[#F38400] text-white text-sm py-3 px-2 rounded-full flex text-[13px] items-center justify-center gap-2">
+            <button 
+            onClick={() =>
+              window.open(
+                "https://cal.com/robin-thebrainburners.io/audit-with-robin",
+                "_blank"
+              )
+            }
+            className="flex-1 bg-[#F38400] text-white text-sm py-3 px-2 rounded-full flex text-[13px] items-center justify-center gap-2">
               Book Free Consultation
               <ArrowRight size={16} />
             </button>
