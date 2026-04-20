@@ -158,7 +158,7 @@ export default function Navbar() {
                   <div key={item.id}>
                     <button
                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                      className="flex  font-bold justify-between w-full px-3 py-3 font-medium rounded-lg hover:bg-[#fff3e4]"
+                      className="flex  font-bold justify-between w-full px-3 py-3  rounded-lg hover:bg-[#fff3e4]"
                     >
                       Services
                  
@@ -217,7 +217,7 @@ export default function Navbar() {
               );
             })}
           </div>
-
+<div className="flex justify-center">
           {/* CTA */}
           <button
             onClick={() =>
@@ -226,10 +226,11 @@ export default function Navbar() {
                 "_blank"
               )
             }
-            className="mt-6 w-full bg-[#F38400] text-white py-3 rounded-full"
+            className="mt-6 w-[80%] mx-auto bg-[#F38400] text-white py-3 rounded-full"
           >
             Book A Strategy Call
           </button>
+          </div>
         </aside>
       </div>
     </nav>
