@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ReportHero from "./components/ReportPageComponents/ReportHero";
 import ReportHeader from "./components/ReportPageComponents/ReportHeader";
 import OverallScoreCard from "./components/ReportPageComponents/OverallScoreCard";
