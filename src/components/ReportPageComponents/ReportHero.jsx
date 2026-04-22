@@ -2,9 +2,9 @@ import React from "react";
 
 const ReportHero = ({ screenshot }) => {
 
-const imageSrc = screenshot
-  ? `data:image/webp;base64,${screenshot}`
-  : null;
+  const imageSrc = screenshot
+    ? `data:image/webp;base64,${screenshot}`
+    : null;
 
   return (
     <section className="flex justify-center pt-6 sm:pt-36 pb-8 sm:pb-30  text-center bg-[#EFF3FF] sm:bg-[url('/Vector.svg')] bg-cover bg-bottom">

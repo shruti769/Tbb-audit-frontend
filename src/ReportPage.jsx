@@ -109,10 +109,10 @@ export default function ReportPage() {
     }
   };
 
-  const report =
-    location.state?.report ||
-    JSON.parse(localStorage.getItem("report"));
+ const report = location.state?.report;
 
+  console.log("REPORT:", report);
+console.log("SCREENSHOT EXISTS:", !!report?.screenshot);
 
   const sections = mapReportToSections(report);
 
@@ -131,6 +131,7 @@ export default function ReportPage() {
       </div>
     );
   }
+
 
   return (
     <div className="bg-[#EFF3FF]">
