@@ -71,6 +71,8 @@ const mapReportToSections = (report) => {
 };
 
 export default function ReportPage() {
+  const navigate = useNavigate();
+
   const [modalOpen, setModalOpen] = useState(false);
   const [currentSolutions, setCurrentSolutions] = useState([]);
   const [downloading, setDownloading] = useState(false);
@@ -110,6 +112,12 @@ export default function ReportPage() {
   };
 
  const report = location.state?.report;
+
+  useEffect(() => {
+    if (!report) {
+      navigate("/", { replace: true });
+    }
+  }, [report, navigate]);
 
   console.log("REPORT:", report);
 console.log("SCREENSHOT EXISTS:", !!report?.screenshot);

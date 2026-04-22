@@ -6,6 +6,7 @@ const ReportHero = ({ screenshot }) => {
     ? `data:image/webp;base64,${screenshot}`
     : null;
 
+    console.log("SRC:", imageSrc?.slice(0, 50));
   return (
     <section className="flex justify-center pt-6 sm:pt-36 pb-8 sm:pb-30  text-center bg-[#EFF3FF] sm:bg-[url('/Vector.svg')] bg-cover bg-bottom">
       <div className="max-w-5xl mx-auto relative">
