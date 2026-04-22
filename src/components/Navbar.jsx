@@ -41,7 +41,7 @@ export default function Navbar() {
     <nav className="relative sm:border-b border-[#00000024]">
       <div className="relative max-w-full px-6 md:px-10 lg:px-16 h-[70px] md:h-[90px] flex items-center justify-between">
       {/* Mobile Menu Button */}
-        <button onClick={() => setOpen(!open)} className="md:hidden ">
+        <button onClick={() => setOpen(!open)} className="lg:hidden ">
           <img src="/Frame 16.svg" className="h-7 w-7" />
         </button>
 
@@ -123,7 +123,7 @@ export default function Navbar() {
 
       {/* ── Mobile Drawer ── */}
       <div
-        className={`fixed inset-0 z-40 md:hidden ${
+        className={`fixed inset-0 z-40 lg:hidden ${
           open ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
