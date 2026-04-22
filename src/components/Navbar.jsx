@@ -41,12 +41,12 @@ export default function Navbar() {
     <nav className="relative sm:border-b border-[#00000024]">
       <div className="relative max-w-full px-6 md:px-10 lg:px-16 h-[70px] md:h-[90px] flex items-center justify-between">
       {/* Mobile Menu Button */}
-        <button onClick={() => setOpen(!open)} className="lg:hidden ">
+        <button onClick={() => setOpen(!open)} className="xl:hidden ">
           <img src="/Frame 16.svg" className="h-7 w-7" />
         </button>
 
         {/* Logo (centered on mobile) */}
-  <div className="block md:hidden absolute left-1/2 transform -translate-x-1/2 md:static md:transform-none md:w-[130px]">
+  <div className="block xl:hidden absolute left-1/2 transform -translate-x-1/2 xl:static md:transform-none md:w-[130px]">
     <img
       src="/logo.png"
       alt="logo"
@@ -56,12 +56,12 @@ export default function Navbar() {
 
         {/* Logo */}
         <div className="w-[100px] md:w-[130px]">
-          <img src="/logo.png" alt="logo" className="hidden md:block w-full h-auto object-contain" />
+          <img src="/logo.png" alt="logo" className="hidden xl:block w-full h-auto object-contain" />
         </div>
      
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex gap-6 lg:gap-10 items-center">
+        <div className="hidden xl:flex gap-6 lg:gap-10 items-center">
 
           {navLinks.map((link) => {
             if (link.id === "services") {
@@ -104,7 +104,7 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-3">
           <button
             onClick={() =>
               window.open(
@@ -123,7 +123,7 @@ export default function Navbar() {
 
       {/* ── Mobile Drawer ── */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden ${
+        className={`fixed inset-0 z-40 xl:hidden ${
           open ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >

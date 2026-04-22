@@ -29,7 +29,7 @@ const HeroSection = () => {
   return (
     <section className="flex flex-col items-center justify-between  pt-10 px-4 sm:px-6 text-center min-h-180 sm:min-h-screen ">
   <div className="flex flex-col items-center justify-center">
-      < h1 className="hidden sm:block text-4xl md:text-6xl font-medium leading-tight max-w-4xl">
+      <h1 className="hidden sm:block text-4xl md:text-6xl font-medium leading-tight max-w-4xl">
         Find Out Why Your
         <span className="font-semibold text-[#F38400]"> Website</span>
         <br />
@@ -53,17 +53,17 @@ const HeroSection = () => {
       <div className="mt-8 w-full max-w-xl flex flex-col items-center gap-4">
 
         {/* Desktop */}
-        <div className="hidden sm:flex items-center bg-white rounded-full w-full shadow-sm overflow-hidden">
+        <div className="hidden sm:flex items-center bg-white p-0 rounded-full w-full shadow-sm overflow-hidden">
           <input
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Enter your website URL (example.com)"
             className="flex-1 px-6 py-5 outline-none text-black placeholder:text-black rounded-full"
-          />  
+          />
 
           <button
             onClick={startAudit}
-            className="bg-[#F38400] text-white px-6 py-3.5 font-medium rounded-full flex items-center gap-2 mr-1"
+            className="bg-[#F38400] text-white px-6 py-5 font-medium rounded-full flex items-center gap-2 "
           >
             Audit My Website
             <ArrowRight size={18} />
@@ -76,7 +76,7 @@ const HeroSection = () => {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="Enter your website URL (example.com)"
-            className="bg-white rounded-full w-full px-6 py-3 outline-none text-black placeholder:text-black text-left font-semibold text-sm"
+            className="bg-white rounded-full w-full px-6 py-3 outline-none text-black placeholder:text-black font-semibold text-sm"
           />
 
           <button
@@ -96,7 +96,7 @@ const HeroSection = () => {
       </p>
     </div>
 
-<div className="mt-6 w-full flex justify-center items-center">
+<div className="mt-6 py-6 w-full flex justify-center items-center">
         <img 
   src="/astro.svg" 
   className="block max-w-2xl" 
