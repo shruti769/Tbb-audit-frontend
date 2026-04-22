@@ -2,21 +2,8 @@ import React from "react";
 
 const ReportHero = ({ screenshot }) => {
 
-  const getMimeType = (base64) => {
-  if (!base64) return null;
-
-  if (base64.startsWith("/9j/")) return "image/jpeg";
-  if (base64.startsWith("iVBOR")) return "image/png";
-  if (base64.startsWith("UklGR")) return "image/webp";
-  if (base64.startsWith("R0lGOD")) return "image/gif";
-
-  return "image/jpeg"; // fallback
-};
-
-const mimeType = getMimeType(screenshot);
-
 const imageSrc = screenshot
-  ? `data:${mimeType};base64,${screenshot}`
+  ? `data:image/webp;base64,${screenshot}`
   : null;
 
   return (
