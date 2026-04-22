@@ -38,7 +38,7 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <nav className="relative border-b border-[#00000024]">
+    <nav className="relative sm:border-b border-[#00000024]">
       <div className="relative max-w-full px-6 md:px-10 lg:px-16 h-[70px] md:h-[90px] flex items-center justify-between">
       {/* Mobile Menu Button */}
         <button onClick={() => setOpen(!open)} className="md:hidden ">
