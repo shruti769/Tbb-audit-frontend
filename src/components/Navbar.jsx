@@ -158,7 +158,7 @@ export default function Navbar() {
                   <div key={item.id}>
                     <button
                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                      className="flex  font-bold justify-between w-full px-3 py-3  rounded-lg hover:bg-[#fff3e4]"
+                      className="flex text-black/80 font-bold justify-between w-full px-3 py-3  rounded-lg hover:bg-[#fff3e4]"
                     >
                       Services
                  
@@ -176,11 +176,15 @@ export default function Navbar() {
     }}
     className={`flex items-center gap-4 py-2 font-bold text-[14px] ${
       activeService === s.label
-        ? "text-black border-b border-dashed border-[#F38400]"
-        : "text-black/70 hover:text-[#F38400]"
+        ? "text-black/80 border-b border-dashed border-[#F38400]"
+        : "text-black/80 hover:text-[#F38400]"
     }`}
   >
-    <div className="h-2 w-2 rounded-full bg-[#CECECE]"></div>
+    <div
+  className={`h-2 w-2 rounded-full ${
+    activeService === s.label ? "bg-[#F38400]" : "bg-[#CECECE]"
+  }`}
+/>
     {s.label}
   </a>
 ))}
@@ -204,7 +208,7 @@ export default function Navbar() {
                   className={`px-3 py-4 font-bold rounded-lg ${
                     active === item.id
                       ? "bg-[#FFEBD3] text-black border-b border-[#F38400]"
-                      : "text-black/70 hover:bg-[#fff3e4]"
+                      : "text-black/80 hover:bg-[#fff3e4]"
                   }`}
                 >
                   {item.label}
