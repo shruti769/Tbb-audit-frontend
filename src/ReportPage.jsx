@@ -113,6 +113,10 @@ export default function ReportPage() {
 
  const report = location.state?.report;
 
+ console.log("REPORT:", report);
+console.log("SCREENSHOT EXISTS:", !!report?.screenshot);
+console.log("SCREENSHOT LENGTH in ReportPage:", report?.screenshot?.length); 
+
   useEffect(() => {
     if (!report) {
       navigate("/", { replace: true });

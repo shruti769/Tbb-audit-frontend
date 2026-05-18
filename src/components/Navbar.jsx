@@ -1,4 +1,4 @@
-"use client";
+
 
 import { useEffect, useState } from "react";
 import {
@@ -7,12 +7,14 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import {useNavigate} from "react-router-dom"
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const [activeService, setActiveService] = useState(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const navigate=useNavigate()
 
   const navLinks = [
     { id: "home", label: "Home", href: "https://thebrainburners.io/home" },
@@ -46,7 +48,7 @@ export default function Navbar() {
         </button>
 
         {/* Logo (centered on mobile) */}
-  <div className="block xl:hidden absolute left-1/2 transform -translate-x-1/2 xl:static md:transform-none md:w-[130px]">
+  <div onClick={()=>navigate("/")} className="cursor-pointer block xl:hidden absolute left-1/2 transform -translate-x-1/2 xl:static md:transform-none md:w-[130px]">
     <img
       src="/logo.png"
       alt="logo"
@@ -55,8 +57,8 @@ export default function Navbar() {
   </div>
 
         {/* Logo */}
-        <div className="w-[100px] md:w-[130px]">
-          <img src="/logo.png" alt="logo" className="hidden xl:block w-full h-auto object-contain" />
+        <div onClick={()=>navigate("/")} className="w-[100px] md:w-[130px]">
+          <img src="/logo.png" alt="logo" className="cursor-pointer hidden xl:block w-full h-auto object-contain" />
         </div>
      
 

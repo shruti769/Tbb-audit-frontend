@@ -1,6 +1,26 @@
 import React from "react";
 
 const ReportHero = ({ screenshot }) => {
+
+   // --- Debug block ---
+  console.group("📸 ReportHero screenshot debug");
+  console.log("Type:", typeof screenshot);
+  console.log("Truthy:", !!screenshot);
+  console.log("Length:", screenshot?.length);
+  console.log("First 100 chars:", screenshot?.slice(0, 100));
+  console.log("Last 20 chars:", screenshot?.slice(-20));
+
+  // Detect format
+  if (screenshot) {
+    if (screenshot.startsWith("data:"))       console.log("Format: ✅ Already a data URI");
+    else if (screenshot.startsWith("/9j/"))   console.log("Format: JPEG (raw base64)");
+    else if (screenshot.startsWith("iVBORw")) console.log("Format: PNG (raw base64)");
+    else if (screenshot.startsWith("UklGR"))  console.log("Format: WebP (raw base64)");
+    else if (screenshot.startsWith("http"))   console.log("Format: ✅ URL —", screenshot);
+    else                                      console.warn("Format: ❓ Unknown prefix:", screenshot.slice(0, 20));
+  }
+  console.groupEnd();
+  
   const getImageSrc = (screenshot) => {
     if (!screenshot) return null;
     

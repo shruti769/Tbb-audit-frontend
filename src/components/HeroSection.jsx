@@ -96,10 +96,10 @@ const HeroSection = () => {
       </p>
     </div>
 
-<div className="mt-6 py-6 w-full flex justify-center items-center">
+<div className="mt-6 pt-6 w-full flex justify-center items-center">
         <img 
-  src="/astro.svg" 
-  className="block max-w-2xl" 
+  src="/astro.png" 
+  className="block max-w-2xl " 
 />
       </div>
 
